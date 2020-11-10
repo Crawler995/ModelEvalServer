@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package rpc_package;
+
+service EvalModelInEdgeService {
+    rpc get_model_metrics (GetModelMetricsRequest) returns (ModelMetricsReply) {}
+}
+
+message GetModelMetricsRequest {
+    bytes model_file = 1;
+    bytes config_file = 2;
+}
+
+message ModelMetricsReply {
+    bool is_success = 1;
+    string message = 2;
+    float model_load_time = 3;
+    float total_inference_time = 4;
+    float per_sample_inference_time = 5;
+}
