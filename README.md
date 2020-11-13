@@ -1,6 +1,6 @@
 # ModelEvalServer
 
-Cooperate with [ModelCompressionWorkflow](https://github.com/Crawler995/ModelCompressionWorkflow), evaluate the pruned model in edge device.
+Cooperate with [ModelCompressionWorkflow](https://github.com/Crawler995/ModelCompressionWorkflow), evaluate the pruned model in edge device (Raspberry Pi / ...).
 
 # Preparation
 
