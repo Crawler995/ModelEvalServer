@@ -56,12 +56,14 @@ class EvalModelInEdge(EvalModelInEdgeServiceServicer):
         remove(eval_config_file_tmp_path)
         remove(metrics_file_tmp_path)
         print('---------------------------------------')
-        
+
         return ModelMetricsReply(**metrics)
 
         
 def serve():
-    server = grpc.server(futures.ThreadPoolExecutor(max_workers=2))
+    server = grpc.server(futures.ThreadPoolExecutor(max_workers=2), options=[
+        ('grpc.max_receive_message_length', 256 * 1024 * 1024),
+    ])
     add_EvalModelInEdgeServiceServicer_to_server(EvalModelInEdge(), server)
 
     server.add_insecure_port('[::]:50000')
